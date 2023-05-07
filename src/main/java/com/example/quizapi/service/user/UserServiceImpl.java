@@ -54,6 +54,8 @@ public class UserServiceImpl implements UserService {
         if (existingUser.isPresent())
             throw new Exception("User with email " + user.getEmail() + " already exists.");
 
+        if (user.getRoles() == null) user.setRoles("USER");
+
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
         return userRepository.save(user);

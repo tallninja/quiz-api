@@ -1,4 +1,4 @@
-package com.example.quizapi.dto.user;
+package com.example.quizapi.dto.auth;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Data
 @Builder
-public class CreateUserDto {
+public class RegisterUserDto {
     @NotBlank
     private String firstName;
 
@@ -21,6 +21,4 @@ public class CreateUserDto {
     @NotBlank
     @Length(min = 8, max = 64)
     private String password;
-
-    private String roles;
 }

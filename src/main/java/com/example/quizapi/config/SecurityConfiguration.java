@@ -4,6 +4,7 @@ import com.example.quizapi.service.userdetails.JpaUserDetailsService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,6 +33,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(auth -> {
                         auth.requestMatchers("/").permitAll();
                         auth.requestMatchers("/actuator/**").permitAll();
+                        auth.requestMatchers("/auth/register").permitAll();
                         auth.requestMatchers("/users/**").hasAuthority("ADMIN");
                         auth.anyRequest().authenticated();
                 })
